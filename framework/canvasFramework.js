@@ -22,6 +22,8 @@ window.addEventListener("load",function () {
 
 		// Clear
         ctx.setTransform(1, 0, 0, 1, 0, 0);
+		// ctx.fillStyle = "rgba(0, 0, 0, 0.2)";
+		// ctx.fillRect(0,0,canvas.width,canvas.height);
 		ctx.clearRect(0,0,canvas.width,canvas.height);
 
 		// Draw scene
@@ -51,7 +53,7 @@ window.addEventListener("load",function () {
 		var updateScreen = false;
 
 		// Update scene
-		if (activeScene.update.call(activeScene, delta) === true) {
+		if (activeScene.update.call(activeScene, delta, currentTime) === true) {
 
 			updateScreen = true;
 		}
@@ -60,7 +62,7 @@ window.addEventListener("load",function () {
 		for (var i = 0; i < activeScene.objects.length; i++) {
 			var object = activeScene.objects[i];
 
-			if (object.update.call(object, delta) === true) {
+			if (object.update.call(object, delta, currentTime) === true) {
 
 				updateScreen = true;
 			}

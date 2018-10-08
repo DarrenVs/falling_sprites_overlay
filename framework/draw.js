@@ -66,3 +66,21 @@ function canvas_fill_rec(context, x, y, sizex, sizey, properties) {
     if (properties !== undefined) canvas_properties(context, properties);
     context.fillRect(x, y, sizex, sizey);
 }
+
+// Render iamge
+function canvas_render_image(context, imageData, x, y, width, height, properties, cutAtX, cutAtY, cutSizeX, cutSizeY) {
+    if (properties !== undefined) canvas_properties(context, properties);
+    if (cutAtX === undefined) {
+
+        context.drawImage(imageData, x, y, width, height);
+    } else {
+
+        context.drawImage(
+            imageData,
+            cutAtX, cutAtY,
+            cutSizeX, cutSizeY,
+            x, y,
+            width, height
+        )
+    }
+}
